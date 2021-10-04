@@ -62,6 +62,9 @@ public class Lab6
     	System.out.printf("What is your %s's retail price? ",name);
         while(temp<0) {
         	temp=scan.nextDouble();
+        	if(temp<0) {
+        		System.out.print("[ERR] a price must be non-negative. Please type it again.\n");
+        	}
         }
         return temp;
     }
