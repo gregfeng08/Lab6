@@ -19,6 +19,7 @@ public class Lab6
         double rpPhone = -1;
         double rpBackpack = -1;
         
+        //Uses a function to read the retail price of different items
         rpLaptop=readRetailPrice("Laptop",scanner);
         rpPhone=readRetailPrice("Phone",scanner);
         rpBackpack=readRetailPrice("Backpack",scanner);
@@ -58,14 +59,17 @@ public class Lab6
      */
     private static double readRetailPrice(String name, Scanner scan)
     {
+    	//Gets the input validation started
         double temp=-1;
     	System.out.printf("What is your %s's retail price? ",name);
+    	//Keeps asking if the entered number is less than 0
         while(temp<0) {
         	temp=scan.nextDouble();
         	if(temp<0) {
         		System.out.print("[ERR] a price must be non-negative. Please type it again.\n");
         	}
         }
+        //If its not less than 0 return the value
         return temp;
     }
 
@@ -75,10 +79,11 @@ public class Lab6
      * @param price
      * @return the after-tax price
      */
+    //Returns the price after tax for AZ specifically
     private static double addTax(double price)
     {   
-    	//System.out.println(getSalesTaxRate("AZ"));
-        return price=price*((float)getSalesTaxRate("AZ"))/100+price;
+    	//Since sales tax rate is in a %, the sales tax is divided by 100 and then multiplied to the price and add
+        return price=price*getSalesTaxRate("AZ")/100+price;
     }
 
     /**
@@ -91,7 +96,7 @@ public class Lab6
     private static double addTax(double price, double rate)
     {
     	//System.out.println(rate);
-    	return price=price*((float)rate/100)+price;
+    	return price=price*(rate/100)+price;
     }
 
     /**
