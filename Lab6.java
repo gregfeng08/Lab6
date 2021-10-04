@@ -1,9 +1,10 @@
 /**-------------------------------------------------------------
 //AUTHOR: Gregory Feng
 //FILENAME: Lab6.java
-//SPECIFICATION: 
+//SPECIFICATION: Code that takes the inputted retail price of your laptop, phone, and backpack and returns the price of what it is in Arizona,
+ * what it is in another state, and how much you could save if you bought it in that other state.
 //FOR: CSE 110 - Lab #6
-//TIME SPENT: how long it took you to complete the assignment.
+//TIME SPENT: 20 min.
 //-----------------------------------------------------------*/
 import java.util.Scanner;
 
@@ -82,7 +83,7 @@ public class Lab6
     //Returns the price after tax for AZ specifically
     private static double addTax(double price)
     {   
-    	//Since sales tax rate is in a %, the sales tax is divided by 100 and then multiplied to the price and add
+    	//Since sales tax rate is in a %, the sales tax is divided by 100 and then multiplied to the price and then the price is added
         return price=price*getSalesTaxRate("AZ")/100+price;
     }
 
@@ -93,9 +94,10 @@ public class Lab6
      * @param rate  sales tax in percent
      * @return the after-tax price
      */
+    //Returns the price after tax for any state besides AZ
     private static double addTax(double price, double rate)
     {
-    	//System.out.println(rate);
+    	//Since sales tax rate is in a %, the sales tax is divided by 100 and then multiplied to the price and then the price is added
     	return price=price*(rate/100)+price;
     }
 
@@ -105,8 +107,10 @@ public class Lab6
      * @param state an abbreviation of a state in the US
      * @return the sales tax in percent
      */
+    //Returns the sales tax rate from this database
     private static double getSalesTaxRate(String state)
     {
+    	//Sales tax rate database
         double SALES_TAX_AZ = 8.40;
         double SALES_TAX_CA = 8.66;
         double SALES_TAX_NV = 8.32;
@@ -114,8 +118,9 @@ public class Lab6
         double SALES_TAX_CO = 7.65;
         double SALES_TAX_NM = 7.82;
         double SALES_TAX_OR = 0.00;
-
+        //Variable rt holds the rate
         double rt = 0;
+        //Switch statement to return the rates depending on the state abbreviation
         switch (state)
         {
         case "AZ":
@@ -139,6 +144,7 @@ public class Lab6
         case "OR":
             rt = SALES_TAX_OR;
             break;
+        //In the case that the state is not part of the database, send a warning message and print as if the sales tax is 0.
         default:
             System.out.println("[WARN] The current database does not have sales tax info for " + state + ". Set to 0");
         }
